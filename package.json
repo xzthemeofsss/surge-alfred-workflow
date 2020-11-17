@@ -1,6 +1,6 @@
 {
   "name": "surge-alfred-workflow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Surge Alfred workflow",
   "main": "index.js",
   "bin": {
