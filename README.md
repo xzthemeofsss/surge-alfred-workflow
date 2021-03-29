@@ -5,4 +5,3 @@
 ```
 npm install -g surge-alfred-workflow
 ```
-

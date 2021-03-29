@@ -1,11 +1,12 @@
-const request = require("request-promise-native");
+const got = require("got");
 
 async function main() {
   var name = process.argv[2];
 
   try {
-    await request.post("http://127.0.0.1:6166/v1/profiles/switch", {
-      body: JSON.stringify({ name }),
+    await got.post("http://127.0.0.1:6166/v1/profiles/switch", {
+      json: true,
+      body: { name },
       headers: {
         "X-key": "sss",
         "Content-Type": "application/json",

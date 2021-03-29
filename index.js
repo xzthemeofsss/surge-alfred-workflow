@@ -1,29 +1,24 @@
 const alfy = require("alfy");
-const fs = require("fs");
-const path = require("path");
+const got = require("got");
 
-if (!process.env.apiToken) {
-  alfy.output([
-    {
-      title: "Inject Surge API Setting",
-      subtitle:
-        "This operation will append http-api setting in all your configuration profiles",
-    },
-  ]);
-  return;
+async function main() {
+  try {
+    const { body } = await got("http://127.0.0.1:6166/v1/profiles", {
+      headers: {
+        "X-key": "sss",
+        "Content-Type": "application/json",
+        Accept: "*/*",
+      },
+    });
+    const { profiles: profileNames } = JSON.parse(body);
+    const items = alfy.inputMatches(profileNames, undefined).map((element) => ({
+      title: element,
+      arg: element,
+    }));
+    alfy.output(items);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-const data = fs.readdirSync(
-  `${process.env.HOME}/Library/Application\ Support/Surge/Profiles`
-);
-
-const profileNames = data
-  .filter((d) => path.extname(d) === ".conf")
-  .map((d) => path.parse(d).name);
-
-const items = alfy.inputMatches(profileNames, undefined).map((element) => ({
-  title: element,
-  arg: element,
-}));
-
-alfy.output(items);
+main();
