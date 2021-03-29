@@ -1,5 +1,7 @@
 const got = require("got");
 
+const key = process.env.apiToken;
+
 async function main() {
   var name = process.argv[2];
 
@@ -8,7 +10,7 @@ async function main() {
       json: true,
       body: { name },
       headers: {
-        "X-key": "sss",
+        "X-key": key,
         "Content-Type": "application/json",
         Accept: "*/*",
       },

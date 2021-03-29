@@ -1,11 +1,12 @@
 const alfy = require("alfy");
 const got = require("got");
 
+const key = process.env.apiToken;
 async function main() {
   try {
     const { body } = await got("http://127.0.0.1:6166/v1/profiles", {
       headers: {
-        "X-key": "sss",
+        "X-key": key,
         "Content-Type": "application/json",
         Accept: "*/*",
       },
