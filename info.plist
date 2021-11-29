@@ -8,11 +8,11 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>086EF619-C4D9-4DA0-A73E-605AB7D8157C</key>
+		<key>227F60DC-E667-4CCD-8682-E6BFA6D916C9</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>2BC97BC8-853A-4740-8071-CCC14F2B7521</string>
+				<string>D0BC436D-BDF5-4388-A52A-D2DD96D18557</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -25,7 +25,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3CBFCBBD-8361-4CD0-A468-DF2108A4FD35</string>
+				<string>2BC97BC8-853A-4740-8071-CCC14F2B7521</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -38,7 +38,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F801D21F-7D02-4CBE-B784-47DBE2B9BED4</string>
+				<string>71A53BCE-2BD2-407E-9EA5-06777BA574E6</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -47,23 +47,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>F801D21F-7D02-4CBE-B784-47DBE2B9BED4</key>
+		<key>E7198D35-4E67-4FB7-AEE8-20EBBF892855</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>71A53BCE-2BD2-407E-9EA5-06777BA574E6</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>F9CB4D67-BCB2-4B9F-9324-6C9AB1D4BF9E</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>086EF619-C4D9-4DA0-A73E-605AB7D8157C</string>
+				<string>227F60DC-E667-4CCD-8682-E6BFA6D916C9</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -80,9 +68,53 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Surge profile switcher</string>
+	<string>Surge switcher</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Now using {query}</string>
+				<key>title</key>
+				<string>Profile is successfully switched</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>2BC97BC8-853A-4740-8071-CCC14F2B7521</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node switch.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>71A53BCE-2BD2-407E-9EA5-06777BA574E6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -103,29 +135,6 @@
 			<string>3CBFCBBD-8361-4CD0-A468-DF2108A4FD35</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./node_modules/.bin/run-node inject.js "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>71A53BCE-2BD2-407E-9EA5-06777BA574E6</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -165,7 +174,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>surge controller</string>
+				<string>surge profile switcher</string>
 				<key>type</key>
 				<integer>5</integer>
 				<key>withspace</key>
@@ -181,30 +190,72 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string></string>
-						<key>outputlabel</key>
-						<string></string>
-						<key>uid</key>
-						<string>F9CB4D67-BCB2-4B9F-9324-6C9AB1D4BF9E</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>spp</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node policy.js "$1"
+
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>surge policy switcher</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>F801D21F-7D02-4CBE-B784-47DBE2B9BED4</string>
+			<string>E7198D35-4E67-4FB7-AEE8-20EBBF892855</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<true/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Now using {query}</string>
+				<key>title</key>
+				<string>Policy is successfully switched</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>D0BC436D-BDF5-4388-A52A-D2DD96D18557</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -212,71 +263,50 @@
 			<key>config</key>
 			<dict>
 				<key>concurrently</key>
-				<true/>
+				<false/>
 				<key>escaping</key>
-				<integer>68</integer>
+				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node switch.js "$1"</string>
+				<string>./node_modules/.bin/run-node policy_switch.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>5</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>086EF619-C4D9-4DA0-A73E-605AB7D8157C</string>
+			<string>227F60DC-E667-4CCD-8682-E6BFA6D916C9</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Now using {query}</string>
-				<key>title</key>
-				<string>Success Switched</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>2BC97BC8-853A-4740-8071-CCC14F2B7521</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>086EF619-C4D9-4DA0-A73E-605AB7D8157C</key>
+		<key>227F60DC-E667-4CCD-8682-E6BFA6D916C9</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>305</integer>
 			<key>ypos</key>
-			<integer>310</integer>
+			<integer>415</integer>
 		</dict>
 		<key>2BC97BC8-853A-4740-8071-CCC14F2B7521</key>
 		<dict>
 			<key>xpos</key>
-			<integer>535</integer>
+			<integer>510</integer>
 			<key>ypos</key>
-			<integer>310</integer>
+			<integer>60</integer>
 		</dict>
 		<key>3CBFCBBD-8361-4CD0-A468-DF2108A4FD35</key>
 		<dict>
 			<key>xpos</key>
-			<integer>620</integer>
+			<integer>880</integer>
 			<key>ypos</key>
-			<integer>60</integer>
+			<integer>115</integer>
 		</dict>
 		<key>71A53BCE-2BD2-407E-9EA5-06777BA574E6</key>
 		<dict>
@@ -292,22 +322,32 @@
 			<key>ypos</key>
 			<integer>185</integer>
 		</dict>
-		<key>F801D21F-7D02-4CBE-B784-47DBE2B9BED4</key>
+		<key>D0BC436D-BDF5-4388-A52A-D2DD96D18557</key>
 		<dict>
 			<key>xpos</key>
-			<integer>185</integer>
+			<integer>505</integer>
 			<key>ypos</key>
-			<integer>205</integer>
+			<integer>410</integer>
+		</dict>
+		<key>E7198D35-4E67-4FB7-AEE8-20EBBF892855</key>
+		<dict>
+			<key>xpos</key>
+			<integer>35</integer>
+			<key>ypos</key>
+			<integer>350</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<dict>
 		<key>apiToken</key>
 		<string>sss</string>
+		<key>port</key>
+		<string>6166</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
 		<string>apiToken</string>
+		<string>port</string>
 	</array>
 	<key>version</key>
 	<string></string>

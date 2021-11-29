@@ -1,18 +1,25 @@
 const alfy = require("alfy");
-const got = require("got");
+const { client } = require("./client");
 
-const key = process.env.apiToken;
+async function listProfiles() {
+  const { body } = await client("/v1/profiles");
+  return body.profiles;
+}
+
+async function getCurrentProfile() {
+  const { body } = await client("/v1/profiles/current");
+  return body.name;
+}
+
 async function main() {
   try {
-    const { body } = await got("http://127.0.0.1:6166/v1/profiles", {
-      headers: {
-        "X-key": key,
-        "Content-Type": "application/json",
-        Accept: "*/*",
-      },
-    });
-    const { profiles: profileNames } = JSON.parse(body);
-    const items = alfy.inputMatches(profileNames, undefined).map((element) => ({
+    const [names, name] = await Promise.all([
+      listProfiles(),
+      getCurrentProfile(),
+    ]);
+    names.splice(names.indexOf(name), 1);
+    names.unshift(name);
+    const items = alfy.inputMatches(names, "title").map((element) => ({
       title: element,
       arg: element,
     }));
